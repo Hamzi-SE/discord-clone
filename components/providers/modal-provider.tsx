@@ -5,19 +5,19 @@ import { useEffect, useState } from "react";
 import CreateServerModal from "@/components/modals/create-server-modal";
 
 export const ModalProvider = () => {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+    const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
-  if (!isMounted) {
-    return null;
-  }
+    if (!isMounted) {
+        return null;
+    }
 
-  return (
-    <>
-      <CreateServerModal />
-    </>
-  );
+    return (
+        <>
+            <CreateServerModal />
+        </>
+    );
 };
