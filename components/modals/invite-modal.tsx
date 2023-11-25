@@ -43,9 +43,7 @@ const InviteModal = () => {
         try {
             setIsLoading(true);
 
-            const response = await axios.patch(
-                `/api/servers/${server?.id}/invite-code`
-            );
+            const response = await axios.patch(`/api/servers/${server?.id}/invite-code`);
 
             onOpen("invite", { server: response.data });
         } catch (error) {
@@ -72,15 +70,12 @@ const InviteModal = () => {
                     </Label>
                     <div className="flex items-center mt-2 gap-x-2">
                         <Input
+                            readOnly
                             disabled={isLoading}
                             className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                             value={inviteUrl}
                         />
-                        <Button
-                            disabled={isLoading}
-                            onClick={onCopy}
-                            size={"icon"}
-                        >
+                        <Button disabled={isLoading} onClick={onCopy} size={"icon"}>
                             {copied ? (
                                 <Check className="w-4 h-4" />
                             ) : (
