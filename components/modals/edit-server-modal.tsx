@@ -30,9 +30,7 @@ import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
     name: z.string().min(1, { message: "Please enter a name for your server" }),
-    imageUrl: z
-        .string()
-        .min(1, { message: "Please add an image for your server" }),
+    imageUrl: z.string().min(1, { message: "Please add an image for your server" }),
 });
 
 const EditServerModal = () => {
@@ -82,18 +80,15 @@ const EditServerModal = () => {
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
-                        Customize your server
+                        Customize Your Server
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
-                        Give your server a personality by adding a name and an
-                        image. You can change these later.
+                        Give your server a personality by adding a name and an image. You can
+                        change these later.
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
-                    <form
-                        onSubmit={form.handleSubmit(onSubmit)}
-                        className="space-y-8"
-                    >
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
                                 <FormField
@@ -130,10 +125,7 @@ const EditServerModal = () => {
                                             />
                                         </FormControl>
                                         <FormMessage className="text-red-500">
-                                            {
-                                                form.formState.errors.name
-                                                    ?.message
-                                            }
+                                            {form.formState.errors.name?.message}
                                         </FormMessage>
                                     </FormItem>
                                 )}
