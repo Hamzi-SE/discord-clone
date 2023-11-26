@@ -71,7 +71,8 @@ const EditServerModal = () => {
     };
 
     const handleClose = () => {
-        form.reset();
+        form.setValue("name", server?.name || "");
+        form.setValue("imageUrl", server?.imageUrl || "");
         onClose();
     };
 
