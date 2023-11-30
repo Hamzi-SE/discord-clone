@@ -14,8 +14,15 @@ import { ModalProvider } from "@/components/providers/modal-provider";
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Discord Clone",
-    description: "Discord Clone built with Next.js",
+    title: "Discord | Your Place to Talk and Hang Out",
+    description:
+        "Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.",
+    icons: {
+        icon: ["/favicon.ico"],
+        apple: ["/apple-touch-icon.png"],
+        shortcut: ["/apple-touch-icon.png"],
+    },
+    manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
