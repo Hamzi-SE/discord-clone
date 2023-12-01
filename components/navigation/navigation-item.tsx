@@ -22,10 +22,7 @@ const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
 
     return (
         <ActionTooltip side="right" align="center" label={name}>
-            <button
-                onClick={handleClick}
-                className="group relative flex items-center"
-            >
+            <button onClick={handleClick} className="group relative flex items-center">
                 <div
                     className={cn(
                         "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
@@ -37,11 +34,10 @@ const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
                 <div
                     className={cn(
                         "relative group flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden",
-                        params?.serverId === id &&
-                            "bg-primary/10 text-primary rounded-[16px]"
+                        params?.serverId === id && "bg-primary/10 text-primary rounded-[16px]"
                     )}
                 >
-                    <Image src={imageUrl} fill alt={`Server ${name} icon`} />
+                    <Image src={imageUrl} fill sizes="48px" alt={`Server ${name} icon`} />
                 </div>
             </button>
         </ActionTooltip>
