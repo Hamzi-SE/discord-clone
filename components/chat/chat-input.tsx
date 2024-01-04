@@ -38,6 +38,9 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
     const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
+        const message = data.content.trim();
+        // optimistic update
+        form.setValue("content", "");
         try {
             const url = qs.stringifyUrl({
                 url: apiUrl,
@@ -50,6 +53,8 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
             router.refresh();
         } catch (error) {
             console.error(error);
+
+            form.setValue("content", message);
         }
     };
 
@@ -64,6 +69,7 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                             <FormControl>
                                 <div className="relative p-4 pb-6">
                                     <button
+                                        disabled={isLoading}
                                         type="button"
                                         onClick={() =>
                                             onOpen("messageFile", { apiUrl, query })

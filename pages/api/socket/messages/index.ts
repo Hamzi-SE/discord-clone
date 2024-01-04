@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponseServerIo) {
     if (req.method !== "POST") {
-        res.status(405).json({ error: "Method not allowed" });
+        return res.status(405).json({ error: "Method not allowed" });
     }
 
     try {
@@ -15,21 +15,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponseS
         const { serverId, channelId } = req.query;
 
         if (!profile) {
-            return res.status(401).json({ message: "Unauthorized" });
+            return res.status(401).json({ error: "Unauthorized" });
         }
 
         if (!serverId) {
-            return res.status(400).json({ message: "Server ID is required" });
+            return res.status(400).json({ error: "Server ID missing" });
         }
 
         if (!channelId) {
-            return res.status(400).json({ message: "Channel ID is required" });
+            return res.status(400).json({ error: "Channel ID missing" });
         }
 
-        if (!content && !fileUrl) {
-            return res
-                .status(400)
-                .json({ message: "The message must have content or a file" });
+        if (!content) {
+            return res.status(400).json({ error: "Content missing" });
         }
 
         const server = await db.server.findFirst({
@@ -64,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponseS
         const member = server.members.find((member) => member.profileId === profile.id);
 
         if (!member) {
-            return res.status(401).json({ message: "Member not found" });
+            return res.status(404).json({ message: "Member not found" });
         }
 
         const message = await db.message.create({
@@ -87,9 +85,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponseS
 
         res?.socket?.server?.io?.emit(channelKey, message);
 
-        res.status(200).json({ message });
+        return res.status(200).json(message);
     } catch (error) {
-        console.error("[MESSAGES_POST] ERROR", error);
-        res.status(500).json({ message: "Internal server error" });
+        console.log("[MESSAGES_POST]", error);
+        return res.status(500).json({ message: "Internal Error" });
     }
 }
