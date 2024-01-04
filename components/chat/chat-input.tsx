@@ -79,6 +79,7 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                                         <Plus className="text-white dark:text-[#313338]" />
                                     </button>
                                     <Input
+                                        autoComplete="off"
                                         disabled={isLoading}
                                         placeholder={`Message ${
                                             type === "conversation" ? name : "#" + name
