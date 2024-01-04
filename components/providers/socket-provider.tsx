@@ -23,7 +23,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
         const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
             // NEXT_PUBLIC_SITE_URL is localhost by default in development
             path: "/api/socket/io",
-            addTrailingSlash: false,
+            // addTrailingSlash: false,
         });
 
         socketInstance.on("connect", () => {
