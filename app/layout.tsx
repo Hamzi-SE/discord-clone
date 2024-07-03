@@ -16,9 +16,9 @@ import { QueryProvider } from "@/components/providers/query-provider";
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Discord | Your Place to Talk and Hang Out",
+    title: "Discord Clone | Your Place to Talk and Hang Out",
     description:
-        "Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.",
+        "This is a clone of Discord created by Muhammad Hamza for portfolio purposes. It is not affiliated with, endorsed by, or in any way officially connected to Discord. Check out the project on GitHub: https://github.com/Hamzi-SE/. Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.",
     icons: {
         icon: ["/favicon.ico"],
         apple: ["/apple-touch-icon.png"],
